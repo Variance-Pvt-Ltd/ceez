@@ -1,0 +1,13 @@
+{
+  "message_type": "bot",
+  "bot_id": 4622536,
+  "sec_token": "ad05d87a-3a8c-4eae-b7c6-1914a2683abd",
+  "alert_time": 1627918850,
+  "delay_seconds": 0,
+  "side" : "BUY",
+  "ticker": "USD_ETHE",
+  "limit" : 1231.12,
+  "stop" : 1200,
+  "order" : "FOK",
+  "quantity" : 1000
+}
