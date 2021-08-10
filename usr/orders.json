@@ -1,0 +1,11 @@
+{
+  "1": {
+    "symbol": "",
+    "type": "",
+    "side": "",
+    "take_profit":"",
+    "execution_priority": 1,
+    "quantity": 1,
+    "timeInForce": ""
+  }
+}

@@ -26,9 +26,10 @@ class Z_Binance:
             print(self.client.get_asset_balance(account))
 
     def order(self, symbol, side, ztype, ztimeInForce, quantity, price='market'):
-        z_order = {}
+        # z_order = {}
+
         try:
-            nonlocal z_order
+            # nonlocal z_order
             z_order = self.client.create_order(
                 symbol=symbol,
                 side=side,
@@ -43,5 +44,6 @@ class Z_Binance:
         except x.BinanceOrderException as e:
             print(e)
             # ToDo : implement exception handling
-
-        return z_order['status']
+        # notification = z_order
+        # finally:
+        #     return notification
