@@ -14,6 +14,9 @@ class Schedule:
         jn.close()
 
     def delete_order(self, id):
+
+
+        
         del self.j[id]
         with open('../usr/orders.json', 'w') as jn:
             json.dump(self.j, jn).encode('utf-8')
