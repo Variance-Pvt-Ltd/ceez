@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport">
+    <title>ceez from Variance</title>
+    <link href={{url_for('static',filename="css/bs-min.css")}} rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amarante&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap" rel="stylesheet">
+    <link href={{url_for('static',filename="fonts/font-awesome.min.css")}} rel="stylesheet">
+    <link href={{url_for('static',filename="fonts/material-icons.min.css")}} rel="stylesheet">
+    <link href={{url_for('static',filename="css/dh-card-image-left-dark.css")}} rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    <link href={{url_for('static',filename="css/NavBar-Notifications-Panel-1.css")}} rel="stylesheet">
+    <link href={{url_for('static',filename="css/NavBar-Notifications-Panel.css")}} rel="stylesheet">
+</head>
+
+<body class="text-black-50" data-bs-offset="72" data-bs-spy="scroll" data-bs-target="#mainNav" id="page-top">
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav">
+    <div class="container">
+        <div class="dropdown flash animated"><a aria-expanded="false"
+                                                class="link-light bg-secondary border rounded border-secondary"
+                                                data-bs-toggle="dropdown" href="#"
+                                                style="padding-top: 11px;"><i class="material-icons">notifications_active</i></a>
+            <div class="dropdown-menu dropdown-menu-dark notification-menu"><a class="dropdown-item notification-item"
+                                                                               href="#">
+                <div>
+                    <p>variance pvt. ltd. Welcomes you to ceez</p><span>few minutes ago...</span>
+                </div>
+            </a></div>
+        </div>
+        <button aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler text-white bg-primary navbar-toggler-right text-uppercase rounded"
+                data-bs-target="#navbarResponsive" data-bs-toggle="collapse"><i
+                class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#schedule">Schedule</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <!-- Start: #place_order --><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#place_order">Place
+                    order</a><!-- End: #place_order -->
+                </li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#settings">Settings</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="text-center text-white bg-primary masthead">
+    <div class="container">
+        <h1 style="font-family: Montserrat, sans-serif;color: rgb(255,255,255);">&nbsp;VARIANCE</h1>
+        <hr class="star-light">
+    </div>
+</header>
+<!-- Start: #schedule -->
+<section class="bg-dark portfolio" id="schedule" style="background: rgb(215,35,35);">
+    <div class="col">
+        <h1 class="text-center d-xl-flex flex-grow-1 flex-fill justify-content-xl-center" style="color: #ffffff;">
+            Schedule</h1>
+        <hr class="star-light">
+        <div class="row">
+            {% block body %}
+
+            {% endblock body %}
+        </div>
+    </div>
+</section>
+<!-- End: #schedule -->
+<!-- Start: #seperator -->
+<section class="text-white bg-primary mb-0" id="separator1" style="background: var(--bs-yellow);"></section>
+<!-- End: #seperator -->
+<!-- Start: #place_order -->
+<section class="bg-dark" id="place_order">
+    <div class="col">
+        <h1 class="text-center d-xl-flex flex-grow-1 flex-fill justify-content-xl-center" style="color: #ffffff;">Place&nbsp;
+            an order</h1>
+        <hr class="star-dark mb-5"><!-- Start: 1 Row 2 Columns -->
+        <div class="container">
+            <div class="photo-card" style="background: rgb(0,0,0);width: 507px;">
+                <div class="photo-background"
+                     style="width: 53.25px;background: linear-gradient(90deg, rgb(8,48,40), var(--bs-primary));"></div>
+                <div class="photo-details" style="width: 446.25px;padding-bottom: 21px;">
+                    <div class="container">
+                        <form action="/save" method="POST">
+                            <label for="symbol"
+                                   style="color: var(--bs-white);font-size: 20px;padding:5px"
+                            >Symbol
+                                <input
+                                        class="u-full-width"
+                                        name="symbol"
+                                        placeholder=""
+                                        type="text"
+                                /></label><br>
+
+                            <label for="Type"
+                                   style="color: var(--bs-white);font-size: 20px;padding:5px"
+                            >Type
+                                <select class="u-full-width" name="type">
+                                    <option value="market">Market</option>
+                                    <option value="limit">Limit</option>
+                                </select></label><br>
+
+                            <label for="take_profit"
+                                   style="color: var(--bs-white);font-size: 20px;padding:5px"
+                            >Take Profit
+                                <input
+                                        class="u-full-width"
+                                        name="take_profit"
+                                        placeholder="Enter percentage"
+                                        type="text"
+                                /></label><br>
+
+                            <label for="quantity"
+                                   style="color: var(--bs-white);font-size: 20px;padding:5px"
+                            >Quantity
+                                <input
+                                        class="u-full-width"
+                                        name="quantity"
+                                        placeholder=""
+                                        type="text"
+                                /></label><br>
+
+                            <input id="schedule_btn" type="submit" value="Schedule"/>
+                            <br/>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- End: 1 Row 2 Columns -->
+
+    </div>
+</section>
+<!-- End: #place_order -->
+<!-- Start: #seperator -->
+<section class="text-white bg-primary mb-0" id="seperator2" style="background: var(--bs-yellow);"></section>
+<!-- End: #seperator -->
+<!-- Start: #settings -->
+<section class="bg-dark d-xl-flex justify-content-xl-center" id="settings">
+    <div class="col">
+        <h1 class="text-center d-xl-flex flex-grow-1 flex-fill justify-content-xl-center" style="color: #ffffff;">
+            Settings</h1>
+        <hr class="star-light"><!-- Start: 1 Row 2 Columns -->
+        <div class="container">
+            <div class="photo-card" style="background: rgb(0,0,0);height: 155px;">
+                <div class="photo-background"
+                     style="width: 60.25px;background: linear-gradient(90deg, rgb(8,48,40), var(--bs-primary));min-height: 129px;"></div>
+                <div class="photo-details" style="padding-bottom: 21px;width: 644.25px;">
+                    <div class="row">
+                        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span
+                                class="d-xl-flex justify-content-xl-center align-items-xl-center"
+                                style="color: var(--bs-white);font-size: 20px;">Long</span></div>
+                        <div class="col">
+                            <button class="btn btn-primary bg-dark border rounded border-dark"
+                                    style="width: 127px;height: 35px;margin: 2px;"
+                                    type="button">ON
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span
+                                class="d-xl-flex justify-content-xl-center align-items-xl-center"
+                                style="color: var(--bs-white);font-size: 20px;">Short</span></div>
+                        <div class="col">
+                            <button class="btn btn-primary bg-dark border rounded border-dark"
+                                    style="width: 127px;height: 35px;margin: 2px;"
+                                    type="button">OFF
+                            </button>
+                        </div>
+                    </div>
+                    <div class="photo-tags"></div>
+                </div>
+            </div>
+        </div><!-- End: 1 Row 2 Columns -->
+    </div>
+</section>
+<!-- End: #settings -->
+<footer class="text-center bg-secondary footer" style="background: rgb(0,0,0);height: 119px;padding-top: 45px;">
+    <div class="container">
+        <div class="col"><small>Made with&nbsp;🤍 by&nbsp; <a href="linkedin.com/in/monees007">@monees007</a></small>
+        </div>
+        <small>Copyright © Variance Pvt. Ltd. 2021</small>
+    </div>
+</footer>
+<div class="d-lg-none scroll-to-top position-fixed rounded"><a class="text-center d-block rounded text-white"
+                                                               href="#page-top"><i class="fa fa-chevron-up"></i></a>
+</div>
+</script {{url_for('static', filename = "js/bs-min.js")}} >
+</script {{ url_for('static', filename = "js/bs-init.js") }}>
+</script {{ url_for('static', filename = "js/js.js")}}>
+</body>
+
+</html>

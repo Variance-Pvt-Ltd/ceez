@@ -9,11 +9,13 @@ class Z_Binance:
         api_key = test_cred()[0]
         api_secret = test_cred()[1]
 
-        self.client = Client(api_key, api_secret)
-
-        #### testing purpose only ####
-        self.client.API_URL = 'https://testnet.binance.vision/api'
-        #############################
+        try:
+            self.client = Client(api_key, api_secret)
+            #### testing purpose only ####
+            self.client.API_URL = 'https://testnet.binance.vision/api'
+            #############################
+        except ReadTimeout:
+            print('Failed connecting Binance')
 
     def balance(self, account='all'):
         if account == 'all':
@@ -25,7 +27,7 @@ class Z_Binance:
         else:  # balance of specific assets
             print(self.client.get_asset_balance(account))
 
-    def order(self, symbol, side, ztype, ztimeInForce, quantity, price='market'):
+    def order(self, symbol, side, ztimeInForce, quantity, price,ztype='market'):
         # z_order = {}
 
         try:
@@ -47,3 +49,4 @@ class Z_Binance:
         # notification = z_order
         # finally:
         #     return notification
+
