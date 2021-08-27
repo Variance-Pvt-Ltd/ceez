@@ -9,9 +9,11 @@ class Bot(Thread) :
 
         self.marginType = settings['margin_type']
         self.state=False
-        self.creds = creds
-        self.settings = settings
-        
+        # self.creds = creds
+        # self.settings = settings
+        # returning this back here on savai error
+        self.api = BrokerAPI(creds,settings['margin_type'])
+        self.api.connect()
 
         #settings 
         self.orderType = settings['type']
@@ -206,8 +208,6 @@ class Bot(Thread) :
         
         self.state=True
         print('Bot started...')
-        self.api = BrokerAPI(self.creds,self.settings['margin_type'])
-        self.api.connect()
 
         while self.state:
             try:
