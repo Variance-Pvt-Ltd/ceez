@@ -52,7 +52,8 @@ def unique(id):
 
 @app.route("/")
 def iniit():
-    Bot1.stop()
+    if Bot1.state:
+        Bot1.stop()
     return render_template('init.html')
 
 @app.route('/webhook', methods = ['POST'])
