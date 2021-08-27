@@ -179,7 +179,7 @@ def update():
         json.dump(s,set)
     set.close()
     t1 = Thread(target=run_bot, args=(s,))
-    t1.start
+    t1.start()
     print('minor')
     
     return redirect('/dashboard')
