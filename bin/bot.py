@@ -8,6 +8,7 @@ class Bot(Thread) :
         Thread.__init__(self)
 
         self.marginType = settings['margin_type']
+        self.state=False
 
         self.api = BrokerAPI(creds,settings['margin_type'])
         self.api.connect()
