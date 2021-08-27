@@ -1,0 +1,18 @@
+{
+  "auto_trade": "on",
+  "margin_type": "FALSE",
+  "type": "LIMIT",
+  "time_in_force": "GTC",
+  "take_profit_levels": 10,
+  "enable_take_profits_upto": "5",
+  "quantity": "4",
+  "quantity_per_take_profit": "77",
+  "take_profits": {
+    "1": 1000,
+    "2": 2000,
+    "3": 3000
+  },
+  "stop_loss_switch": false,
+  "stoploss_type": "STOP_LOSS",
+  "stop_loss": "500"
+}

@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block body %}
+{% for item in list %}
+<div class="col">
+    <div class="container">
+        <div class="d-xl-flex photo-card" style="background: rgb(0,0,0);width: 332px;">
+            <div class="col" style="width: 258px;">
+                <div class="border rounded border-dark shadow-lg photo-background"
+                     style="background: linear-gradient(90deg, rgb(8,48,40), var(--bs-primary));min-height: 40px;max-height: 53px;height: 53px;width: 330px;border-radius: 10px, 10px,10px,0px;border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-right-radius: 0px;border-style: hidden;border-bottom-left-radius: 0px;"></div>
+                <div class="border rounded-0 border-dark photo-details"
+                     style="padding-bottom: 21px;width: auto; padding-left: 23px;">
+                    <div class="row" style="width: auto;height: 43px;">
+                        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"
+                             style="width: -19px;">
+                            <h1 style="font-weight: bold;color: #ffffff;font-size: 26px;">#{{item['id']}}</h1>
+                        </div>
+                        <div class="col" style="width: 204px;">
+                            <h1 style="font-weight: bold;color: var(--bs-white);
+                            font-size: 26px;">
+                                {{item['symbol']}}</h1>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span
+                                class="d-xl-flex justify-content-xl-center align-items-xl-center"
+                                style="color: var(--bs-white);font-size: 20px;">Type</span></div>
+                        <div class="col"><select
+                                class="bg-dark border rounded border-dark d-xl-flex justify-content-xl-center"
+                                readonly="true"
+                                style="height: 35px;width: 75px;margin: 2px;margin-left: 2px;padding-left: 9px;color: rgb(255,255,255);">
+                            <option value="12">Limit</option>
+                            <option selected="" value="13">Market</option>
+                        </select></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span
+                                class="d-xl-flex justify-content-xl-center align-items-xl-center"
+                                style="color: var(--bs-white);font-size: 20px;">Take Profit</span></div>
+                        <div class="col"><input class="bg-dark border rounded border-dark" readonly="true"
+                                                style="color: var(--bs-white);width: 127px;height: 35px;margin: 2px;"
+                                                type="number"
+                                                value="{{item['take_profit']}}"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span
+                                class="d-xl-flex justify-content-xl-center align-items-xl-center"
+                                style="color: var(--bs-white);font-size: 20px;">Quantity</span></div>
+                        <div class="col"><input class="bg-dark border rounded border-dark" readonly="true"
+                                                style="color: var(--bs-white);width: 127px;height: 35px;margin: 2px;"
+                                                type="number"
+                                                value="{{item['quantity']}}"/>
+                        </div>
+                    </div>
+                    <div class="photo-tags">
+                        <ul class="d-xl-flex justify-content-xl-end" style="margin: 13.9px 0px 0px;">
+                            <li><a class="text-uppercase bg-secondary" href="/delete/{{item['id']}}">Delete</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% if len %}
+<div style="text-align: center;">
+    <h3 style="color: rgb(255,255,255);">Nothing Scheduled</h3>
+</div>
+{%endif%}
+{% endblock body %}
+
+{% block settings %}
+<!--variable:-->
+<!--    settings : dict-->
+<div class="container">
+    <div class="photo-card" style="background: rgb(0,0,0);height: 425px;">
+        <div class="photo-background" style="width: 60.25px;background: linear-gradient(90deg, rgb(8,48,40), var(--bs-primary));min-height: 129px;"></div>
+        <div class="photo-details" style="padding-bottom: 21px;width: 644.25px;">
+            <div class="row">
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span class="d-xl-flex justify-content-xl-center align-items-xl-center" style="color: var(--bs-white);font-size: 20px;">Auto-Trade</span></div>
+                <div class="col"><button class="btn btn-primary bg-dark border rounded border-dark" type="button" style="width: 127px;height: 35px;margin: 2px;">{% if settings['auto_trade'] %} Enabled {% else %} Disabled {% endif %}</button></div>
+            </div>
+            <div class="row">
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span class="d-xl-flex justify-content-xl-center align-items-xl-center" style="color: var(--bs-white);font-size: 20px;">Time In Force</span></div>
+                <div class="col"><input class="bg-dark border rounded border-dark" type="text" value={% settings['time_in_force'] %} style="height: 35px;readonly: true;width: 127px;margin: 2px;color: rgb(255,255,255);"></div>
+            </div>
+            <div class="row">
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span class="d-xl-flex justify-content-xl-center align-items-xl-center" style="color: var(--bs-white);font-size: 20px;">Enabled Take-Profit Levels</span></div>
+                <div class="col"><input class="bg-dark border rounded border-dark" type="number" value = {% settings["enable_take_profits_upto"] %} style="width: 127px;height: 35px;margin: 2px;"></div>
+            </div>
+            <div class="row">
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span class="d-xl-flex justify-content-xl-center align-items-xl-center" style="color: var(--bs-white);font-size: 20px;">Quantity per&nbsp; Take - Profit</span></div>
+                <div class="col"><input class="bg-dark border rounded border-dark" type="number" value = {% settings["quantity_per_take_profit"] %} style="width: 127px;height: 35px;margin: 2px;"></div>
+            </div>
+            <div class="row">
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span class="d-xl-flex justify-content-xl-center align-items-xl-center" style="color: var(--bs-white);font-size: 20px;">Stop-Loss</span></div>
+                <div class="col"><button class="btn btn-primary bg-dark border rounded border-dark" type="button" style="width: 127px;height: 35px;margin: 2px;">{% if settings['stop_loss_switch'] %} Enabled {% else %} Disabled {% endif %}</button></div>
+            </div>
+            <div class="row">
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span class="d-xl-flex justify-content-xl-center align-items-xl-center" style="color: var(--bs-white);font-size: 20px;">Stop-Loss Type</span></div>
+                <div class="col"><input class="bg-dark border rounded border-dark" type="text" value={% settings['stoploss_type'] %} style="height: 35px;readonly: true;width: 127px;margin: 2px;color: rgb(255,255,255);"></div>
+            </div>
+            <div class="row">
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span class="d-xl-flex justify-content-xl-center align-items-xl-center" style="color: var(--bs-white);font-size: 20px;">Stop-Loss @</span></div>
+                <div class="col"><input class="bg-dark border rounded border-dark" type="number" value={% settings['stop_loss'] %} style="width: 127px;height: 35px;margin: 2px;"></div>
+            </div>
+            <div class="row">
+                <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><span class="d-xl-flex justify-content-xl-center align-items-xl-center" style="color: var(--bs-white);font-size: 20px;">Margin Type</span></div>
+                <div class="col"><button class="btn btn-primary bg-dark border rounded border-dark" type="button" style="width: 127px;height: 35px;margin: 2px;">{% if settings['auto_trade']=='FALSE' %} FALSE {% else %} TRUE {% endif %}</button></div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="photo-tags">
+                        <ul class="d-xl-flex justify-content-xl-end" style="margin: 13.9px 0px 0px;">
+                            <li></li>
+                            <li><a class="text-uppercase bg-danger" href="#">Close SEssion</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="photo-tags"></div>
+        </div>
+    </div>
+</div><!-- End: 1 Row 2 Columns -->
+{% endblock settings %}
+
