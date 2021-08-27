@@ -150,11 +150,12 @@ def delete(i):
     jn.close()
     return redirect('/dashboard')
 
-def run_bot():
+def run_bot(s):
     print('major')
     if Bot1.state:
         Bot1.update_attributes(s)
     else:
+        Bot1.update_attributes(s)
         Bot1.run()
 
 @app.route('/dashboard/update', methods=['POST','GET'])
@@ -177,7 +178,7 @@ def update():
     with open('usr/settings.json', 'w') as set:
         json.dump(s,set)
     set.close()
-    t1 = Thread(target=run_bot, args=())
+    t1 = Thread(target=run_bot, args=(s,))
     t1.start
     print('minor')
     
@@ -185,4 +186,4 @@ def update():
 
 
 if __name__ == '__main__':
-    app.run(port=80)
+        app.run(port=80)
