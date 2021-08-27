@@ -9,9 +9,9 @@ class Bot(Thread) :
 
         self.marginType = settings['margin_type']
         self.state=False
-
-        self.api = BrokerAPI(creds,settings['margin_type'])
-        self.api.connect()
+        self.creds = creds
+        self.settings = settings
+        
 
         #settings 
         self.orderType = settings['type']
@@ -203,8 +203,11 @@ class Bot(Thread) :
         self.state=False
 
     def run(self):
+        
         self.state=True
         print('Bot started...')
+        self.api = BrokerAPI(self.creds,self.settings['margin_type'])
+        self.api.connect()
 
         while self.state:
             try:

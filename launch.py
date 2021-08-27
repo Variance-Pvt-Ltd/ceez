@@ -169,6 +169,7 @@ def update():
         Bot1.update_attributes(s)
     else:
         Bot1.run()
+    
     return redirect('/dashboard')
 
 
