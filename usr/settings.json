@@ -1,1 +1,1 @@
-{"auto_trade": "True", "margin_type": "FALSE", "type": "MARKET", "time_in_force": "IOC", "enable_take_profits_upto": 3, "quantity": 5.2, "quantity_per_take_profit": 3.1, "take_profits": [2.0, 2.0, 1500.0], "stop_loss_switch": "True", "stoploss_type": "TRAILING_STOPLOSS", "stop_loss": 20.0}
+{"auto_trade": "True", "margin_type": "FALSE", "type": "MARKET", "time_in_force": "IOC", "enable_take_profits_upto": 4, "quantity": 5.2, "quantity_per_take_profit": 3.1, "take_profits": [2.0, 2.0, 1500.0], "stop_loss_switch": "True", "stoploss_type": "STOP_LOSS", "stop_loss": 20.0}

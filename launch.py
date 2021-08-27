@@ -1,4 +1,5 @@
 import json, os
+from threading import Thread
 from bin.bot import Bot
 from subprocess import Popen
 from flask import Flask, render_template, request, redirect
@@ -52,6 +53,10 @@ def unique(id):
 
 @app.route("/")
 def iniit():
+    return render_template('init.html')
+
+@app.route("/end")
+def end():
     if Bot1.state:
         Bot1.stop()
     return render_template('init.html')
@@ -113,6 +118,7 @@ def start():
         with open('usr/credentials.json', 'w') as f:
             json.dump(c,f)
             f.close()
+
     # from bin import app
     return redirect('/dashboard')
     
@@ -144,6 +150,12 @@ def delete(i):
     jn.close()
     return redirect('/dashboard')
 
+def run_bot():
+    print('major')
+    if Bot1.state:
+        Bot1.update_attributes(s)
+    else:
+        Bot1.run()
 
 @app.route('/dashboard/update', methods=['POST','GET'])
 def update():
@@ -165,10 +177,9 @@ def update():
     with open('usr/settings.json', 'w') as set:
         json.dump(s,set)
     set.close()
-    if Bot1.state:
-        Bot1.update_attributes(s)
-    else:
-        Bot1.run()
+    t1 = Thread(target=run_bot, args=())
+    t1.start
+    print('minor')
     
     return redirect('/dashboard')
 
