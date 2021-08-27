@@ -57,3 +57,11 @@
   }
 
 })(); // End of use strict
+
+
+function auto_trade() {
+  console.log("imhere")
+  var elem = document.getElementById('b1');
+  if (elem.value=='Enabled') elem.value='Disabled';
+  else elem.value='Enabl3ed'
+}
