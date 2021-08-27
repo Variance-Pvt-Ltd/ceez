@@ -213,11 +213,11 @@ class BrokerAPI:
         o = self.api.get_margin_order(symbol=symbol,orderId=orderId)
         return o
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
 
-	import json
-	with open(os.path.join(os.path.dirname(__file__),'credentials.json')) as f:
-		creds = json.load(f)
-		f.close()
+# 	import json
+# 	with open(os.path.join(os.path.dirname(__file__),'credentials.json')) as f:
+# 		creds = json.load(f)
+# 		f.close()
 
-	api = BrokerAPI(creds,False)
+# 	api = BrokerAPI(creds,False)
