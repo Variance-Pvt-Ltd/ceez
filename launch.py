@@ -93,7 +93,6 @@ def Alert():
 
 @app.route("/dashboard")
 def dashboard():
-    Bot1.run()
     with open('usr/settings.json') as f:
         settings = json.load(f)
         all = settings['take_profits']
@@ -165,7 +164,10 @@ def update():
     with open('usr/settings.json', 'w') as set:
         json.dump(s,set)
     set.close()
-    Bot1.update_attributes(s)
+    if Bot1.state:
+        Bot1.update_attributes(s)
+    else:
+        Bot1.run()
     return redirect('/dashboard')
 
 
