@@ -2,6 +2,7 @@ python-binance
 gunicorn
 flask
 numpy
+pathlib
 pandas
 popen
-
+requests
